@@ -1,0 +1,82 @@
+.header {
+  overflow: hidden;
+  background-color: #423F3F;
+  padding: 20px 10px;
+}
+
+body{
+background-color: #F5F5F7;
+}
+
+
+
+.header a {
+  font-family: "SF Pro Text";
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+/* Стиль ссылки логотипа */
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #575BFD;
+  color: white;
+}
+
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.header-right {
+  font-size: 25px;
+  font-weight: bold;
+  float: right;
+}
+
+
+@font-face {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://raw.githubusercontent.com/blaisck/sfwin/master/SFPro/TrueType/SFProText-Medium.ttf");
+}
+
+@media screen and (max-width: 650px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+
+.megaDIV{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+
+.lox{
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-left: 50%;
+    margin-right: 0%;
+}

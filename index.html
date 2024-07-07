@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/main.css')}}">
+</head>
+<body>
+<div class="header">
+  <a href="#default" class="logo">Активная система видеонаблюдения</a>
+
+  <div class="header-right">
+      <a href="http://t.me/davsf">BySaf</a>
+  </div>
+</div>
+<div class = "megaDIV">
+    <div class = "images">
+        <img src="{{ url_for('video_feed_cv') }}" height="700" width="850"  alt="Camera Stream1">
+    </div>
+    <div class = "img">
+            <img src="http://192.168.11.1:8080/stream?topic=/main_camera/image_raw" height="700" width="850" alt="Camera Stream2">
+    </div>
+</div>
+<div id="log"></div>
+    <br>
+    <form id="form">
+      <label for="text">Input: </label>
+      <input type="text" id="text" autofocus>
+    </form>
+
+    <script>
+      const log = (text, color) => {
+        document.getElementById('log').innerHTML += `<span style="color: ${color}">${text}</span><br>`;
+      };
+
+      const socket = new WebSocket('ws://' + location.host + '/echo');
+      socket.addEventListener('message', ev => {
+        log('<<< ' + ev.data, 'black');
+      });
+      document.getElementById('form').onsubmit = ev => {
+        ev.preventDefault();
+        const textField = document.getElementById('text');
+        log('>>> ' + textField.value, 'black');
+        socket.send(textField.value);
+        textField.value = '';
+      };
+    </script>
+</div>
+ <!-- <img src="{{ url_for('video_feed') }}" alt="Camera Stream"> -->
+
+</body>
+</html>
